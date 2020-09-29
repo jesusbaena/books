@@ -1,0 +1,24 @@
+<h1>Libros</h1>
+<%= link_to "Nuevo Libro", new_book_path %> 
+<br><br>
+<table border = "1">
+    <thead>
+       <tr>
+         <th>Título</th>
+         <th>Descripción</th>
+         <th>Fecha de Publicación</th>
+         <th></th>
+       </tr>
+    </thead>
+    <tbody>
+        <% @books.each do |book| %>
+            <td>
+            <%= link_to "Mostrar", book %>
+            <% if signed_in? %>
+              <%= link_to "Editar", edit_book_path(book) %>
+              <%= link_to "Eliminar", book, method: :delete, data: { confirm: "¿Estás seguro de eliminar este libro?" } %>
+            <% end %>
+          </td>
+    </tbody>
+</table>
+ <% end %>
